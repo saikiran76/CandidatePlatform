@@ -1,12 +1,12 @@
 /**
  * DropDown Component
  */
-
+import '../App.css'
 import { TextField } from '@mui/material';
 import { useState } from 'react';
-import '../App.css'
 import { useDispatch } from 'react-redux';
 import { setSelectedRole } from './utils/listingSlice';
+import useData from '../hooks/useData';
 
 
 export const DropDown = () => {
@@ -16,6 +16,8 @@ export const DropDown = () => {
     // sample array for roles
     const roles = ['SWE', 'Intern', 'Product Manager', 'HR Specialist'];
 
+    useData();
+    
     // handler for event change at dropdown (based on role option)
     const handleChange = (event) => {
       setRole(event.target.value);
@@ -34,8 +36,8 @@ export const DropDown = () => {
           <option key="default" value="">
             Roles
           </option>
-          {roles.map((role) => (
-            <option key={role} value={role}>
+          {useData().map((role, index) => (
+            <option key={role[index].jobRole} value={role}>
               {role}
             </option>
           ))}

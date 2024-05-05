@@ -1,5 +1,5 @@
-# Candidate Application Platform
-## Overview
+## Candidate Application Platform
+# Overview
 This a User-friendly Candidate Application Platform that allows user to view job listings, and filter jobs.
 
 
