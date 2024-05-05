@@ -2,7 +2,7 @@
  * This child component has the listings (being fetched from rest api) and infintely scrollable
  */
 import '../App.css';
-import { Card, Grid, Typography } from "@mui/material";
+import {Grid, Typography} from "@mui/material";
 import React from "react";
 import CardLayout from './Card';
 

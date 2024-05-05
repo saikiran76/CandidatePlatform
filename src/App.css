@@ -44,15 +44,20 @@
 
 
 .logo{
-  width: 20%;
+  width: 7%;
 
 }
 .company{
   display: flex;
   align-items: center;
   margin-left: 1em;
+  margin-top: 1em;
 }
 
 .main-info{
   margin-left:  1em;
+}
+
+.about{
+  margin: 1em;
 }
