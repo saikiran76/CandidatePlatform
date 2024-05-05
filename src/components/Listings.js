@@ -33,13 +33,25 @@ const Listings = () =>{
     // }
     
     // useEffect(()=>getData, []);
-    useData();
+    const { jobs, loading } = useData();
     const selectedRole = useSelector((state) => state.job.Role); // subscribing job slice with the Listings using selector
+
+    if (loading) {
+        return <div>Loading...</div>; 
+    }
+    console.log("Jobs:", jobs);
+
+    
 
     // Filter data based on selected role
     const filteredData = selectedRole
     ? Data.filter((item) => item.role === selectedRole)
     : Data;
+    
+    // loading while fetching
+    if (loading) {
+        return <div>Loading...</div>;
+    }
 
 
     return(
