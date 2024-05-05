@@ -3,11 +3,12 @@
  */
 import '../App.css';
 import {Grid} from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import CardLayout from './Card';
 // import { Data } from './utils/SampleData';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector} from 'react-redux';
+import { useRef } from 'react';
 // import useData from '../hooks/useData';  
 
 const Listings = ({ jobs, loading }) => {
@@ -21,6 +22,20 @@ const Listings = ({ jobs, loading }) => {
     const selectedMinExp = useSelector(state => state.jobList.experience);
     const selectedMinSalary = useSelector(state => state.jobList.minBase);
     const selectedLocation = useSelector(state => state.jobList.location);
+
+    const targetRef = useRef(null);
+
+    useEffect(() => {
+        scrollToTarget();
+      }, []);
+
+    const scrollToTarget = () => {
+        if (targetRef.current) {
+          targetRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+      };
+
+      
 
     // Corrected filtering logic
     let filteredData = jobs
@@ -43,7 +58,8 @@ const Listings = ({ jobs, loading }) => {
 
     return (
       <Grid container spacing={2}>
-        {filteredData.map((item) => (
+        {filteredData.map((item, index) => (
+        <React.Fragment key={item.jdUid}>
           <CardLayout
             role={item.jobRole}
             Location={item.location}
@@ -55,8 +71,13 @@ const Listings = ({ jobs, loading }) => {
             key={item}
             minExp={item.minExp}
           />
+          {index === filteredData.length - 1 && <div ref={targetRef} />}
+
+            </React.Fragment>
+          
         ))}
         {loading && <p>Loading...</p>}
+        
       </Grid>
     );
 };

@@ -5,6 +5,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addJobs } from "../components/utils/jobSlice";
+import { useRef } from "react";
 
 const useData = () =>{
     const dispatch = useDispatch();
@@ -15,6 +16,14 @@ const useData = () =>{
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
     const [page, setPage] = useState(1);
+
+    const targetRef = useRef(null);
+
+    const scrollToTarget = () => {
+        if (targetRef.current) {
+          targetRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+      };
 
     const getData = async()=>{
         setIsLoading(true);
@@ -68,6 +77,7 @@ const useData = () =>{
         if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight || isLoading) {
           return;
         }
+        scrollToTarget();
         getData();
       };
     
