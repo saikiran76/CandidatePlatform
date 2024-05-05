@@ -19,6 +19,13 @@ const Listings = ({jobs}) =>{
     // : jobs;
     
     // hansling null values while filtering
+    // const filteredData = selectedRole
+    // ? jobs.filter(
+    //   (item) =>
+    //     item.jobRole === selectedRole &&
+    //     item.minJdSalary !== null
+    // )
+    // : jobs.filter((item) => item.minJdSalary !== null)
     const filteredData = selectedRole
     ? jobs.filter(
       (item) =>

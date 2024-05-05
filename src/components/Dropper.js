@@ -4,7 +4,7 @@
 import '../App.css'
 import { TextField } from '@mui/material';
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setSelectedRole } from './utils/listingSlice';
 // import useData from '../hooks/useData';
 
@@ -13,9 +13,9 @@ export const DropDown = ({ jobs }) => {
     const [selectedRole, setRole] = useState(''); 
     const dispatch = useDispatch(); // dispatch an action when option is selected
 
-    // sample array for roles
-    // const roles = ['SWE', 'Intern', 'Product Manager', 'HR Specialist'];
-    console.log("Jobs fetched into dropdown:", jobs)
+    const roles = jobs ? jobs.map(job => job.jobRole) : [];
+    console.log("Roles fetched into dropdown:", roles)
+    console.log("Jobs fetched into dropdown", jobs)
 
     const handleChange = (event) => {
       setRole(event.target.value);
@@ -34,14 +34,14 @@ export const DropDown = ({ jobs }) => {
           <option key="default" value="">
             Roles
           </option>
-          {jobs.map((role, index) => (
-            <option key={role.jdUid} value={role.jobRole
-            }>
-              {role.jobRole}
+          {jobs && jobs.map((job, index) => (
+            <option key={job.jdUid} value={job.jobRole}>
+              {job.jobRole}
             </option>
           ))}
         </TextField>
       </div>
     );
-  };
+};
+
   

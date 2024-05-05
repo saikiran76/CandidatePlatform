@@ -33,21 +33,27 @@ const useData = () =>{
 
             if (data && data.jdList) {
                 dispatch(addJobs(data.jdList)); // Assuming addJobs action expects an array of job objects
+                console.log("Jobs fetched initially:", data.jdList)
+                alert("Jobs fetched initially:", data.jdList)
             } else {
                 console.log("No jdList found in API response.");
+                alert("No jdList found in API response.")
             }
     
             // dispatch(addJobs(jsonData))
             
             // console.log(`Data from the API ${jsonData}`);
         } catch(error){
-            console.log(`Error fetching data ${error}`)
+            // console.log(`Error fetching data ${error}`)
+            // alert(`Error fetching data ${error}`);
+            console.log("Error fetching data, try resolving", error)
         }
     
     }
     
     useEffect(()=>{
         if (!jobs) {
+            console.log("Jobs are null and need to be fetched...")
             getData();
         }
     }, [jobs, dispatch]);

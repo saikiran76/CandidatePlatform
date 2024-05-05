@@ -17,7 +17,7 @@ const Home = () =>{
     }
     return(
         <>
-        <Filter/>
+        <Filter jobs={jobs}/>
         <Listings jobs={jobs}/>
         </>
     )

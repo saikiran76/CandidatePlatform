@@ -7,7 +7,10 @@ import { DropDown } from './Dropper';
 import useData from '../hooks/useData';
 
 const Filter = () =>{
-    const { jobs, loading } = useData();
+    // const { jobs, loading } = useData();
+    // console.log("At Filter, that means hook is being called")
+    const {jobs, loading} = useData();
+    console.log('jobs that Filter component recieve: ', jobs)
 
     if (loading) {
         return <div>Loading...</div>;
