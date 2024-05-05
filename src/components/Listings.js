@@ -6,10 +6,17 @@ import {Grid} from "@mui/material";
 import React from "react";
 import CardLayout from './Card';
 // import { Data } from './utils/SampleData';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
-// import useData from '../hooks/useData';
+// import useData from '../hooks/useData';  
 
-const Listings = ({ jobs }) => {
+const Listings = ({ jobs, loading }) => {
+
+    // const [items, setItems] = useState([]);
+    // // const [isLoading, setIsLoading] = useState(false);
+    // const [error, setError] = useState(null);
+    // const [page, setPage] = useState(1);
+
     const selectedRole = useSelector(state => state.jobList.Role);
     const selectedMinExp = useSelector(state => state.jobList.experience);
     const selectedMinSalary = useSelector(state => state.jobList.minBase);
@@ -49,6 +56,7 @@ const Listings = ({ jobs }) => {
             minExp={item.minExp}
           />
         ))}
+        {loading && <p>Loading...</p>}
       </Grid>
     );
 };
