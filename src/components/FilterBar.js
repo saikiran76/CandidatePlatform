@@ -18,7 +18,9 @@ const Filter = () =>{
     
     return(
         <div className='filter-bar'>
-            <DropDown jobs={jobs}/>
+            <DropDown jobs={jobs} type="role"/>
+            <DropDown jobs={jobs} type="experience"/>
+            <DropDown jobs={jobs} type='loc'/>
         </div>
     )
 }

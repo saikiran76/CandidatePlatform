@@ -5,44 +5,52 @@ import '../App.css';
 import {Grid} from "@mui/material";
 import React from "react";
 import CardLayout from './Card';
-import { Data } from './utils/SampleData';
+// import { Data } from './utils/SampleData';
 import { useSelector } from 'react-redux';
 // import useData from '../hooks/useData';
 
-const Listings = ({jobs}) =>{
+const Listings = ({ jobs }) => {
+    const selectedRole = useSelector(state => state.jobList.Role);
+    const selectedMinExp = useSelector(state => state.jobList.experience);
+    const selectedMinSalary = useSelector(state => state.jobList.minBase);
+    const selectedLocation = useSelector(state => state.jobList.location);
 
-    const selectedRole = useSelector((state) => state.job.Role); // subscribing job slice with the Listings using selector
-   
-    // Filter data based on selected role
-    // const filteredData = selectedRole
-    // ? jobs.filter((item) => item.jobRole === selectedRole)
-    // : jobs;
-    
-    // hansling null values while filtering
-    // const filteredData = selectedRole
-    // ? jobs.filter(
-    //   (item) =>
-    //     item.jobRole === selectedRole &&
-    //     item.minJdSalary !== null
-    // )
-    // : jobs.filter((item) => item.minJdSalary !== null)
-    const filteredData = selectedRole
-    ? jobs.filter(
-      (item) =>
-        item.jobRole === selectedRole &&
-        item.minJdSalary !== null
-    )
-    : jobs.filter((item) => item.minJdSalary !== null);
-    
-    return(
-        <Grid container spacing={2}>
-            {
-                filteredData.map(item => <CardLayout role={item.jobRole} Location={item.location} description={item.jobDetailsFromCompany
-                } company={item.companyName
-                } logoUrl={item.logoUrl} minJdSalary={item.minJdSalary} maxJdSalary={item.maxJdSalary} key={item} minExp={item.minExp}/>)
-            }
-        </Grid>
-    )
-}
+    // Corrected filtering logic
+    let filteredData = jobs
+       ? selectedRole
+           ? jobs.filter(item => item.jobRole === selectedRole)
+            : jobs
+        : [];
 
-export default Listings;
+    if (selectedMinExp) {
+        filteredData = filteredData.filter(item => item.minExp === parseInt(selectedMinExp));
+    }
+
+    if (selectedMinSalary) {
+        filteredData = filteredData.filter(item => item.minJdSalary === selectedMinSalary);
+    }
+
+    if (selectedLocation) {
+        filteredData = filteredData.filter(item => item.location === selectedLocation);
+    }
+
+    return (
+      <Grid container spacing={2}>
+        {filteredData.map((item) => (
+          <CardLayout
+            role={item.jobRole}
+            Location={item.location}
+            description={item.jobDetailsFromCompany}
+            company={item.companyName}
+            logoUrl={item.logoUrl}
+            minJdSalary={item.minJdSalary}
+            maxJdSalary={item.maxJdSalary}
+            key={item}
+            minExp={item.minExp}
+          />
+        ))}
+      </Grid>
+    );
+};
+
+export default Listings

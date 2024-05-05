@@ -6,7 +6,7 @@ import jobSlice from "./jobSlice";
 
 const jobStore = configureStore({
     reducer:{
-        job: listingSlice,
+        listing: listingSlice,
         jobList: jobSlice
     }
 })
