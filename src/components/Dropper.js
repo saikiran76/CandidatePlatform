@@ -17,14 +17,6 @@ export const DropDown = ({ jobs }) => {
     // const roles = ['SWE', 'Intern', 'Product Manager', 'HR Specialist'];
     console.log("Jobs fetched into dropdown:", jobs)
 
-    // const { jobs } = useData();
-    // console.log("The list finally has arrived:", jdList);
-    // const jdList = jobs && jobs.jdList ? jobs.jdList : [];
-    // console.log("The list finally has arrived:", jdList);
-
-    // const jobList = useSelector(store => store.jobList.list);
-    // console.log(`subscribed and fetched ${jobList}`)
-    // handler for event change at dropdown (based on role option)
     const handleChange = (event) => {
       setRole(event.target.value);
       dispatch(setSelectedRole(event.target.value)) // dispatching an action

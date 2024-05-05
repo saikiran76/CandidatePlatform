@@ -11,42 +11,12 @@ import { useSelector } from 'react-redux';
 
 const Listings = ({jobs}) =>{
 
-    // const getData = async()=>{
-    //     const myHeaders = new Headers();
-    //     myHeaders.append("Content-Type", "application/json");
-
-    //     const body = JSON.stringify({
-    //         "limit": 10,
-    //         "offset": 0
-    //     });
-        
-    //     const requestOptions = {
-    //         method: "POST",
-    //         headers: myHeaders,
-    //         body
-    //     };
-
-    //     const data = await fetch("https://api.weekday.technology/adhoc/getSampleJdJSON", requestOptions);
-    //     const JsonData = await data.json()
-    //     console.log(JsonData);
-    
-    // }
-    
-    // useEffect(()=>getData, []);
-    // const { jobs, loading } = useData();
     const selectedRole = useSelector((state) => state.job.Role); // subscribing job slice with the Listings using selector
-    // const { jdList } = jobs;
-    // if (loading) {
-    //     return <div>Loading...</div>; 
-    // }
-    // console.log("Jobs:", jobs);
-
-    
-
+   
     // Filter data based on selected role
     const filteredData = selectedRole
-    ? Data.filter((item) => item.role === selectedRole)
-    : Data;
+    ? jobs.filter((item) => item.jobRole === selectedRole)
+    : jobs;
     
     // loading while fetching
     // if (loading) {
@@ -57,7 +27,9 @@ const Listings = ({jobs}) =>{
     return(
         <Grid container spacing={2}>
             {
-                filteredData.map(item => <CardLayout role={item.role} Location={item.location} description={item.description} company={item.company} key={item}/>)
+                filteredData.map(item => <CardLayout role={item.jobRole} Location={item.location} description={item.jobDetailsFromCompany
+                } company={item.companyName
+                } key={item}/>)
             }
         </Grid>
     )
