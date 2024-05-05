@@ -2,7 +2,7 @@
  * This is the filter bar where we can filter the listings based on Role, etc
  */
 import '../App.css';
-import { TextField, Typography } from "@mui/material";
+import { TextField } from "@mui/material";
 import React from "react";
 
 const Filter = () =>{

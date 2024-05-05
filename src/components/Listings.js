@@ -5,20 +5,14 @@ import '../App.css';
 import {Grid} from "@mui/material";
 import React from "react";
 import CardLayout from './Card';
+import { Data } from './utils/SampleData';
 
 const Listings = () =>{
     return(
         <Grid container spacing={2}>
-            <CardLayout/>
-            <CardLayout/>
-            <CardLayout/>
-            <CardLayout/>
-            <CardLayout/>
-            <CardLayout/>
-            <CardLayout/>
-            <CardLayout/>
-            <CardLayout/>
-            <CardLayout/>
+            {
+                Data.map(item => <CardLayout role={item.role} Location={item.location} description={item.description} company={item.company} key={item}/>)
+            }
         </Grid>
     )
 }

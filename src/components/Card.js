@@ -19,7 +19,7 @@ const theme = createTheme({
     },
   });
 
-const CardLayout = () =>{
+const CardLayout = ({role, Location, description, company}) =>{
     return(
         <ThemeProvider theme={theme}>
         <Grid item xs={12} sm={6} md={6} lg={4}>
@@ -31,9 +31,9 @@ const CardLayout = () =>{
                 <div className="company">
                     <img className="logo" src="https://media.licdn.com/dms/image/D4E0BAQEHqg62-J-PLQ/company-logo_200_200/0/1709336754236/ema_unlimited_logo?e=2147483647&v=beta&t=Wo9F-C8UufpFFdd_vptBvDykrcp7kcepVX7NdGon2wg" alt="logo" />
                     <div className="main-info">
-                        <Typography className="title" variant="h6" sx={{ fontSize: 'medium', fontWeight: '600', letterSpacing: '2px', marginBottom: '1px' }}>Emu</Typography>
-                        <Typography sx={{ fontSize: 'medium', marginBottom: '2px' }}>SWE</Typography>
-                        <Typography variant="h6" sx={{ fontSize: 'small' }}>Bengaluru, India</Typography>
+                        <Typography className="title" variant="h6" sx={{ fontSize: 'medium', fontWeight: '600', letterSpacing: '2px', marginBottom: '1px' }}>{company}</Typography>
+                        <Typography sx={{ fontSize: 'medium', marginBottom: '2px' }}>{role}</Typography>
+                        <Typography variant="h6" sx={{ fontSize: 'small' }}>{Location}</Typography>
                     </div>
                 </div>
                 <Typography sx={{ margin: '1em', color: 'Gray', width: '75%' }}>Estimated Salary: 30 - 50 LPA ✅</Typography>
@@ -42,7 +42,7 @@ const CardLayout = () =>{
                     <Typography variant="h6" sx={{ fontSize: 'medium', fontWeight: '500' }}>About Company:</Typography>
                     <Typography variant="h7" sx={{ fontWeight: '600' }}>About us</Typography>
                     <ReadMore>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+                        {description}
                     </ReadMore>
                 </div>
 
