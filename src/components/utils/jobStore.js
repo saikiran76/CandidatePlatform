@@ -2,10 +2,12 @@
 
 import { configureStore } from "@reduxjs/toolkit";
 import listingSlice from "./listingSlice";
+import jobSlice from "./jobSlice";
 
 const jobStore = configureStore({
     reducer:{
-        job: listingSlice
+        job: listingSlice,
+        jobList: jobSlice
     }
 })
 

@@ -36,7 +36,7 @@ export const DropDown = () => {
           <option key="default" value="">
             Roles
           </option>
-          {useData().map((role, index) => (
+          {roles.map((role, index) => (
             <option key={role[index].jobRole} value={role}>
               {role}
             </option>
