@@ -3,12 +3,15 @@
  */
 
 import React from "react";
+import Listings from "./Listings";
+import Filter from "./FilterBar";
 
 const Home = () =>{
     return(
-        <div className="home-container">
-            <h1>I'm Home</h1>
-        </div>
+        <>
+        <Filter/>
+        <Listings/>
+        </>
     )
 }
 
