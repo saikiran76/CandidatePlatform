@@ -14,22 +14,25 @@ const Listings = ({jobs}) =>{
     const selectedRole = useSelector((state) => state.job.Role); // subscribing job slice with the Listings using selector
    
     // Filter data based on selected role
-    const filteredData = selectedRole
-    ? jobs.filter((item) => item.jobRole === selectedRole)
-    : jobs;
+    // const filteredData = selectedRole
+    // ? jobs.filter((item) => item.jobRole === selectedRole)
+    // : jobs;
     
-    // loading while fetching
-    // if (loading) {
-    //     return <div>Loading...</div>;
-    // }
-
-
+    // hansling null values while filtering
+    const filteredData = selectedRole
+    ? jobs.filter(
+      (item) =>
+        item.jobRole === selectedRole &&
+        item.minJdSalary !== null
+    )
+    : jobs.filter((item) => item.minJdSalary !== null);
+    
     return(
         <Grid container spacing={2}>
             {
                 filteredData.map(item => <CardLayout role={item.jobRole} Location={item.location} description={item.jobDetailsFromCompany
                 } company={item.companyName
-                } key={item}/>)
+                } logoUrl={item.logoUrl} minJdSalary={item.minJdSalary} maxJdSalary={item.maxJdSalary} key={item} minExp={item.minExp}/>)
             }
         </Grid>
     )

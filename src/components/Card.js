@@ -20,7 +20,9 @@ const theme = createTheme({
     },
   });
 
-const CardLayout = ({role, Location, description, company}) =>{
+const CardLayout = ({role, Location, description, company, logoUrl, 
+    minJdSalary, maxJdSalary, minExp
+}) =>{
     return(
         <ThemeProvider theme={theme}>
         <Grid item xs={12} sm={6} md={6} lg={4}>
@@ -30,14 +32,14 @@ const CardLayout = ({role, Location, description, company}) =>{
                     <Typography sx={{ fontSize: '0.70em', width: '20em' }}>Posted 5 days ago</Typography>
                 </div>
                 <div className="company">
-                    <img className="logo" src="https://media.licdn.com/dms/image/D4E0BAQEHqg62-J-PLQ/company-logo_200_200/0/1709336754236/ema_unlimited_logo?e=2147483647&v=beta&t=Wo9F-C8UufpFFdd_vptBvDykrcp7kcepVX7NdGon2wg" alt="logo" />
+                    <img className="logo" src={logoUrl} alt="logo" />
                     <div className="main-info">
                         <Typography className="title" variant="h6" sx={{ fontSize: 'medium', fontWeight: '600', letterSpacing: '2px', marginBottom: '1px' }}>{company}</Typography>
                         <Typography sx={{ fontSize: 'medium', marginBottom: '2px' }}>{role}</Typography>
                         <Typography variant="h6" sx={{ fontSize: 'small' }}>{Location}</Typography>
                     </div>
                 </div>
-                <Typography sx={{ margin: '1em', color: 'Gray', width: '75%' }}>Estimated Salary: 30 - 50 LPA ✅</Typography>
+                <Typography sx={{ margin: '1em', color: 'Gray', width: '75%' }}>Estimated Salary: ₹{minJdSalary} - {maxJdSalary} LPA ✅</Typography>
 
                 <div className="about">
                     <Typography variant="h6" sx={{ fontSize: 'medium', fontWeight: '500' }}>About Company:</Typography>
@@ -50,7 +52,7 @@ const CardLayout = ({role, Location, description, company}) =>{
                 
                 <div>
                 <Typography sx={{ marginLeft: '1.3em', color: 'Gray', width: '75%', fontSize: '0.7em', letterSpacing: '1.5px' }}>Minimum Experience</Typography>
-                <Typography sx={{ marginLeft: '1.3em', width: '75%', fontSize: '0.8em', letterSpacing: '1.5px' }}>8 years</Typography>
+                <Typography sx={{ marginLeft: '1.3em', width: '75%', fontSize: '0.8em', letterSpacing: '1.5px' }}>{!minExp ? 0 : minExp} years</Typography>
                 </div>
                 <div className="buttons">
                     <Button
