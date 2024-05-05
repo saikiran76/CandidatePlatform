@@ -8,8 +8,11 @@ import CardLayout from './Card';
 
 const Listings = () =>{
     return(
-        <Grid container spacing={4}>
-            <Grid item>
+        <Grid container spacing={2}>
+            <Grid item xs={12} sm={6} md={6} lg={4}>
+                <CardLayout/>
+                <CardLayout/>
+                <CardLayout/>
                 <CardLayout/>
                 <Typography>The first item</Typography>
             </Grid>

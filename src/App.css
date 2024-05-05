@@ -22,7 +22,7 @@
 
 }
 
-.time{
+.Time{
   display: flex;
   gap: 4px;
   align-items: center;
@@ -60,4 +60,22 @@
 
 .about{
   margin: 1em;
+}
+
+.b1 {
+  width: 335px;
+  text-transform: capitalize;
+  border-radius: 0.55em;
+  margin-left: 1em;
+}
+
+/* Custom button styles */
+.b1:nth-child(1) {
+  background: #54efc3;
+  color: black;
+}
+
+.b1:nth-child(2) {
+  background: #0B57D0;
+  color: white;
 }
