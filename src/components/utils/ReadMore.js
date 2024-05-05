@@ -1,3 +1,4 @@
+import { Typography } from "@mui/material";
 import { useState } from "react";
 
 export const ReadMore = ({ children }) => {
@@ -14,7 +15,7 @@ export const ReadMore = ({ children }) => {
                 className="read-or-hide"
                 style={{ color: "green" }}
             >
-                {isReadMore ? "View Job" : " show less"}
+                {isReadMore ? <Typography sx={{fontWeight:'800'}}>View Job</Typography> : " show less"}
             </span>
         </p>
   
