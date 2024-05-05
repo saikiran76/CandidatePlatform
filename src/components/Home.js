@@ -5,12 +5,20 @@
 import React from "react";
 import Listings from "./Listings";
 import Filter from "./FilterBar";
+import useData from "../hooks/useData";
+
+
 
 const Home = () =>{
+    const { jobs, loading } = useData();
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
     return(
         <>
         <Filter/>
-        <Listings/>
+        <Listings jobs={jobs}/>
         </>
     )
 }

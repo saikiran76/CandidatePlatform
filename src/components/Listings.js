@@ -7,9 +7,9 @@ import React from "react";
 import CardLayout from './Card';
 import { Data } from './utils/SampleData';
 import { useSelector } from 'react-redux';
-import useData from '../hooks/useData';
+// import useData from '../hooks/useData';
 
-const Listings = () =>{
+const Listings = ({jobs}) =>{
 
     // const getData = async()=>{
     //     const myHeaders = new Headers();
@@ -33,13 +33,13 @@ const Listings = () =>{
     // }
     
     // useEffect(()=>getData, []);
-    const { jobs, loading } = useData();
+    // const { jobs, loading } = useData();
     const selectedRole = useSelector((state) => state.job.Role); // subscribing job slice with the Listings using selector
-
-    if (loading) {
-        return <div>Loading...</div>; 
-    }
-    console.log("Jobs:", jobs);
+    // const { jdList } = jobs;
+    // if (loading) {
+    //     return <div>Loading...</div>; 
+    // }
+    // console.log("Jobs:", jobs);
 
     
 
@@ -49,9 +49,9 @@ const Listings = () =>{
     : Data;
     
     // loading while fetching
-    if (loading) {
-        return <div>Loading...</div>;
-    }
+    // if (loading) {
+    //     return <div>Loading...</div>;
+    // }
 
 
     return(

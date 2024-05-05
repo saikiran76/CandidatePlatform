@@ -4,11 +4,18 @@
 import '../App.css';
 import React from "react";
 import { DropDown } from './Dropper';
+import useData from '../hooks/useData';
 
 const Filter = () =>{
+    const { jobs, loading } = useData();
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+    
     return(
         <div className='filter-bar'>
-            <DropDown/>
+            <DropDown jobs={jobs}/>
         </div>
     )
 }
