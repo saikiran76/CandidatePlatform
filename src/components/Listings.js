@@ -13,6 +13,12 @@ const Listings = () =>{
             <CardLayout/>
             <CardLayout/>
             <CardLayout/>
+            <CardLayout/>
+            <CardLayout/>
+            <CardLayout/>
+            <CardLayout/>
+            <CardLayout/>
+            <CardLayout/>
         </Grid>
     )
 }
