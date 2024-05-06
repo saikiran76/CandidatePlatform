@@ -5,14 +5,11 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addJobs } from "../components/utils/jobSlice";
-import { useRef } from "react";
 
 const useData = () =>{
     const dispatch = useDispatch();
     const jobs = useSelector(store => store.jobList.list);
     // const loading = useSelector(store => store.jobList.loading);
-
-    const [items, setItems] = useState([]);
     // const [isLoading, setIsLoading] = useState(false);
     // const [error, setError] = useState(null);
     // const [page, setPage] = useState(1);
@@ -52,10 +49,8 @@ const useData = () =>{
             if (data && data.jdList) {
                 dispatch(addJobs(data.jdList)); // Assuming addJobs action expects an array of job objects
                 console.log("Jobs fetched initially:", data.jdList)
-                alert("Jobs fetched initially:", data.jdList)
             } else {
                 console.log("No jdList found in API response.");
-                alert("No jdList found in API response.")
             }
     
             // dispatch(addJobs(jsonData))
