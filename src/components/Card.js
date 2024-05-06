@@ -28,7 +28,7 @@ const CardLayout = ({role, Location, description, company, logoUrl,
     return(
         <ThemeProvider theme={theme}>
         <Grid item xs={12} sm={6} md={6} lg={4}>
-            <Card className="card" sx={{ width: '80%', padding: '0.7em', borderRadius: '1em' }}>
+            <Card className="card" sx={{ width: '80%', padding: '0.7em', borderRadius: '1em', transform: "scale(1)" }}>
                 <div className="Time">
                     <img src="https://cdn-icons-png.flaticon.com/512/3579/3579913.png" className="timer-icon"  alt="timer" />
                     <Typography sx={{ fontSize: '0.70em', width: '20em' }}>Posted 5 days ago</Typography>
@@ -38,7 +38,7 @@ const CardLayout = ({role, Location, description, company, logoUrl,
                         <img className="logo" src={logoUrl} alt="logo" />
                     {/* </LazyLoad> */}
                     <div className="main-info">
-                        <Typography className="title" variant="h6" sx={{ fontSize: 'medium', fontWeight: '600', letterSpacing: '2px', marginBottom: '1px' }}>{company}</Typography>
+                        <Typography className="title" variant="h6" sx={{ fontSize: 'medium', fontWeight: '600', letterSpacing: '2px', marginBottom: '1px', cursor:"pointer" }}>{company}</Typography>
                         <Typography sx={{ fontSize: 'medium', marginBottom: '2px' }}>{role}</Typography>
                         <Typography variant="h6" sx={{ fontSize: 'small' }}>{Location}</Typography>
                     </div>

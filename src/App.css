@@ -55,6 +55,18 @@
 
 }
 
+/* card */
+.css-1pv58qj-MuiPaper-root-MuiCard-root{
+  transform: scale(0.9);
+  transition: transform 0.3s ease-out;
+  transition-delay: 0.2s;
+}
+
+.css-1pv58qj-MuiPaper-root-MuiCard-root:hover{
+  transform: scale(1.005);
+}
+
+
 .Time{
   display: flex;
   gap: 4px;

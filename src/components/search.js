@@ -14,7 +14,7 @@ import useDebounce from '../hooks/useDebounce';
 const SearchBar = ({ jobs }) => {
   const dispatch = useDispatch();
   const [text, setText] = React.useState("");
-  const debouncedSearchText = useDebounce(text, 250); // used an ideal time delay 
+  const debouncedSearchText = useDebounce(text, 250); // using an ideal time delay for debounce
 
   const handleInputChange = (e) => {
     const searchText = e.target.value;
