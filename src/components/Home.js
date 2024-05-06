@@ -10,7 +10,7 @@ import useData from "../hooks/useData";
 
 
 const Home = () =>{
-    const { jobs, isLoading } = useData();
+    const { jobs, isLoading, getData, fetchMoreData } = useData();
 
     if (isLoading) {
         return <div>Loading...</div>;
@@ -19,7 +19,7 @@ const Home = () =>{
     return(
         <>
         <Filter jobs={jobs}/>
-        <Listings jobs={jobs} loading={isLoading}/>
+        <Listings />
         </>
     )
 }

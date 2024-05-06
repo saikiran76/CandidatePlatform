@@ -10,28 +10,27 @@ import { useRef } from "react";
 const useData = () =>{
     const dispatch = useDispatch();
     const jobs = useSelector(store => store.jobList.list);
-    const loading = useSelector(store => store.jobList.loading);
+    // const loading = useSelector(store => store.jobList.loading);
 
     const [items, setItems] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState(null);
-    const [page, setPage] = useState(1);
+    // const [isLoading, setIsLoading] = useState(false);
+    // const [error, setError] = useState(null);
+    // const [page, setPage] = useState(1);
 
-    const targetRef = useRef(null);
+    // const targetRef = useRef(null);
 
-    const scrollToTarget = () => {
-        if (targetRef.current) {
-          targetRef.current.scrollIntoView({ behavior: 'smooth' });
-        }
-      };
+    // const scrollToTarget = () => {
+    //     if (targetRef.current) {
+    //       targetRef.current.scrollIntoView({ behavior: 'smooth' });
+    //     }
+    //   };
 
     const getData = async()=>{
-        setIsLoading(true);
-        setError(null);
+        // setIsLoading(true);
+        // setError(null);
         try{
             const myHeaders = new Headers();
             myHeaders.append("Content-Type", "application/json");
-
 
             const body = JSON.stringify({
                 "limit": 20,
@@ -47,8 +46,8 @@ const useData = () =>{
             const response = await fetch("https://api.weekday.technology/adhoc/getSampleJdJSON", requestOptions);
             const data = await response.json();
 
-            setItems(prevItems => [...prevItems, ...data]);
-            setPage(prevPage => prevPage + 1);
+            // setItems(prevItems => [...prevItems, ...data.jdList]);
+            // setPage(prevPage => prevPage + 1);
 
             if (data && data.jdList) {
                 dispatch(addJobs(data.jdList)); // Assuming addJobs action expects an array of job objects
@@ -65,31 +64,30 @@ const useData = () =>{
         } catch(error){
             // console.log(`Error fetching data ${error}`)
             // alert(`Error fetching data ${error}`);
-            setError(error);
+            // setError(error);
             console.log("Error fetching data, try resolving", error)
-        }finally{
-            setIsLoading(false);
         }
     
     }
 
-    const handleScroll = () => {
-        if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight || isLoading) {
-          return;
-        }
-        scrollToTarget();
-        getData();
-      };
+    // const handleScroll = () => {
+    //     if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight || isLoading) {
+    //       return;
+    //     }
+    //     scrollToTarget();
+    //     getData();
+    //   };
     
     useEffect(()=>{
         
         if (!jobs) {
             console.log("Jobs are null and need to be fetched...")
-            window.addEventListener('scroll', handleScroll);
+            getData();
+            // window.addEventListener('scroll', handleScroll);
         }
-    }, [jobs, isLoading]);
+    }, [jobs]);
 
-    return { jobs, isLoading };
+    return { jobs };
 
     // console.log(`The fetched and dispatched list ${jobs}`)
 }
