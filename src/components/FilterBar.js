@@ -1,5 +1,6 @@
 /**
- * This is the filter bar where we can filter the listings based on Role, etc
+ * This is the filter bar where we can filter the listings based on Role,.. etc
+ * It has drop downs and search bar components and children
  */
 import '../App.css';
 import React from "react";
@@ -8,10 +9,9 @@ import useData from '../hooks/useData';
 import SearchBar from './search';
 
 const Filter = () =>{
-    // const { jobs, loading } = useData();
-    // console.log("At Filter, that means hook is being called")
     const {jobs, loading} = useData();
-    console.log('jobs that Filter component recieve: ', jobs)
+    // For debugging purpose
+    // console.log('jobs that Filter component recieve: ', jobs)
 
     if (loading) {
         return <div>Loading...</div>;

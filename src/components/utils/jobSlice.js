@@ -1,4 +1,4 @@
-/* job slice for fetching and updating the job list*/
+/* job slice for fetching and updating global states */
 
 import { createSlice } from "@reduxjs/toolkit";
 
@@ -11,7 +11,7 @@ const jobSlice = createSlice({
     experience: null,
     minBase: 0,
     location: "",
-    searchQuery: "", // New state for search query
+    searchQuery: "", 
   },
   reducers: {
     addJobs: (state, action) => {

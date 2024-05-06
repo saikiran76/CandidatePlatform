@@ -1,4 +1,7 @@
-// SearchBar.js
+/**
+ * Search functionality is implemented here
+ * filtering based on text state of the input
+ */
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import '../App.css';

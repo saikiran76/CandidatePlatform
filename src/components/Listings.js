@@ -1,15 +1,16 @@
 /**
  * This child component has the listings (being fetched from rest api) and its infintely scrollable
+ * Challenges - implementing infinte scroll and data filtering based on value dispatched from options 
+ * - including search feature
  */
 import '../App.css';
 import {Grid} from "@mui/material";
 import React, { useEffect } from "react";
 import CardLayout from './Card';
-// import { Data } from './utils/SampleData';
 import { useState } from 'react';
 import { useSelector} from 'react-redux';
 import { useMemo } from 'react';
-// import useData from '../hooks/useData';  
+
 
 const Listings = ({jobs}) => {
   const searchQuery = useSelector(state => state.jobList.searchQuery);
@@ -19,8 +20,9 @@ const Listings = ({jobs}) => {
   const selectedMinSalary = useSelector(state => state.jobList.minBase);
   const selectedLocation = useSelector(state => state.jobList.location);
 
-  console.log('From drop down these are the ones selected')
-  console.log(selectedRole, selectedMinExp, selectedLocation, selectedMinSalary)
+  // debugging purpose logs
+  // console.log('From drop down these are the ones selected')
+  // console.log(selectedRole, selectedMinExp, selectedLocation, selectedMinSalary)
 
   const [card, setCard] = useState([]);
   const [page, setPage] = useState(1);
@@ -72,78 +74,29 @@ const Listings = ({jobs}) => {
     return () => window.removeEventListener("scroll", handelInfiniteScroll);
   }, []);
 
-  // const filteredData = useMemo(() => {
-  //   if (!card) return [];
-
-  //   console.log("selectedRole from filter:", selectedRole);
-  //   console.log("card:", card);
-  //   const filteredCards = card ? selectedRole ? card.filter(item => {
-  //     let isValid = true;
-  //     if (selectedRole && selectedRole !== item.jobRole) isValid = false;
-  //     if (selectedMinExp && parseInt(selectedMinExp) !== item.minExp) isValid = true;
-  //     if (selectedMinSalary && selectedMinSalary !== item.minJdSalary.toString()) isValid = true 
-  //     if (selectedLocation && selectedLocation !== item.location) isValid = true
-  //     return isValid;
-  //   });
-    
-  //   return filteredCards.length > 0 ? filteredCards : card; 
-  // }, [card, selectedRole, selectedMinExp, selectedMinSalary, selectedLocation]);
-
-  // let filteredData = card
-  //      ? selectedRole
-  //          ? card.filter(item => item.jobRole === selectedRole)
-  //           : card
-  //       : [];
-
-  //   if (selectedMinExp) {
-  //       filteredData = filteredData.filter(item => item.minExp === parseInt(selectedMinExp));
-  //   }
-
-  //   if (selectedMinSalary) {
-  //       filteredData = filteredData.filter(item => item.minJdSalary === selectedMinSalary);
-  //   }
-
-  //   if (selectedLocation) {
-  //       filteredData = filteredData.filter(item => item.location === selectedLocation);
-  //   }
-  // const filteredData = useMemo(() => {
-  //   console.log("Filtering Data...");
-  //   console.log("card:", card);
-  //   console.log("selectedRole:", selectedRole);
-  //   console.log("selectedMinExp:", selectedMinExp);
-  //   console.log("selectedMinSalary:", selectedMinSalary);
-  //   console.log("selectedLocation:", selectedLocation);
-  
-  //   const filtered = card.filter(
-  //     item =>
-  //       (!selectedRole || item.jobRole === selectedRole) &&
-  //       (!selectedMinExp || parseInt(selectedMinExp) <= item.minExp) &&
-  //       (!selectedMinSalary || item.minJdSalary === selectedMinSalary) &&
-  //       (!selectedLocation || item.location === selectedLocation)
-  //   );
-  
-  //   console.log("Filtered Data:", filtered);
-  //   return filtered;
-  // }, [card, selectedRole, selectedMinExp, selectedMinSalary, selectedLocation]);
-
-  // console.log('The final filtered data from callback', filteredData)
-  // const filteredData = card.filter(job => job.companyName.toLowerCase().includes(searchQuery.toLowerCase()));
+  /**filtering out data based on role, experience,.. 
+   * also made use of useMemo to memoize the function results to decrese unnecessary re-renders
+   * null values are filtered out
+  **/
 
   const filteredData = useMemo(() => {
     if (!card) return [];
-
+  
     return card.filter(job => {
+      // Checking for null values in minExp and minJdSalary
+      const hasValidMinExp = job.minExp!== null;
+      const hasValidMinJdSalary = job.minJdSalary!== null;
+  
       const matchesSearch = job.companyName.toLowerCase().includes(searchQuery.toLowerCase());
       const matchesRole =!selectedRole || job.jobRole === selectedRole;
       const matchesExp =!selectedMinExp || parseInt(selectedMinExp) <= job.minExp;
       const matchesSalary =!selectedMinSalary || job.minJdSalary === selectedMinSalary;
       const matchesLocation =!selectedLocation || job.location === selectedLocation;
-
-      return matchesSearch && matchesRole && matchesExp && matchesSalary && matchesLocation;
+  
+      return matchesSearch && matchesRole && matchesExp && matchesSalary && matchesLocation && hasValidMinExp && hasValidMinJdSalary;
     });
   }, [card, searchQuery, selectedRole, selectedMinExp, selectedMinSalary, selectedLocation]);
-  
-  
+    
   return (
     <Grid container spacing={2}>
       {filteredData.map((item, index) => (

@@ -10,7 +10,7 @@ import useData from "../hooks/useData";
 
 
 const Home = () =>{
-    const { jobs, isLoading, getData, fetchMoreData } = useData();
+    const { jobs, isLoading } = useData();
 
     if (isLoading) {
         return <div>Loading...</div>;
