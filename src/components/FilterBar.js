@@ -5,6 +5,7 @@ import '../App.css';
 import React from "react";
 import { DropDown } from './Dropper';
 import useData from '../hooks/useData';
+import SearchBar from './search';
 
 const Filter = () =>{
     // const { jobs, loading } = useData();
@@ -21,6 +22,7 @@ const Filter = () =>{
             <DropDown jobs={jobs} type="role"/>
             <DropDown jobs={jobs} type="experience"/>
             <DropDown jobs={jobs} type='loc'/>
+            <SearchBar/>
         </div>
     )
 }
