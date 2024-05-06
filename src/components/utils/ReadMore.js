@@ -1,3 +1,7 @@
+/**
+ * Utility function for expanding job description out
+ */
+
 import { Typography } from "@mui/material";
 import { useState } from "react";
 

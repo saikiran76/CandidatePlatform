@@ -28,4 +28,4 @@ const Filter = () =>{
     )
 }
 
-export default Filter;
+export default React.memo(Filter);

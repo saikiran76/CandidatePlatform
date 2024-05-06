@@ -1,11 +1,13 @@
 /**
  * This is where card layout is designed for listings
+ * Lazy loaded the logos images
  */
 import '../App.css';
 import { Button, Card, Typography, createTheme, ThemeProvider } from "@mui/material";
 import React from "react";
 import { ReadMore } from './utils/ReadMore';
 import {Grid} from "@mui/material";
+import LazyLoad from 'react-lazyload';
 
 
 const theme = createTheme({
@@ -32,7 +34,9 @@ const CardLayout = ({role, Location, description, company, logoUrl,
                     <Typography sx={{ fontSize: '0.70em', width: '20em' }}>Posted 5 days ago</Typography>
                 </div>
                 <div className="company">
-                    <img className="logo" src={logoUrl} alt="logo" />
+                    {/* <LazyLoad height={100} offset={10}> */}
+                        <img className="logo" src={logoUrl} alt="logo" />
+                    {/* </LazyLoad> */}
                     <div className="main-info">
                         <Typography className="title" variant="h6" sx={{ fontSize: 'medium', fontWeight: '600', letterSpacing: '2px', marginBottom: '1px' }}>{company}</Typography>
                         <Typography sx={{ fontSize: 'medium', marginBottom: '2px' }}>{role}</Typography>
@@ -93,4 +97,4 @@ const CardLayout = ({role, Location, description, company, logoUrl,
     )
 }
 
-export default CardLayout;
+export default React.memo(CardLayout);

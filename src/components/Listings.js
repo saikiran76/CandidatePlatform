@@ -10,6 +10,7 @@ import CardLayout from './Card';
 import { useState } from 'react';
 import { useSelector} from 'react-redux';
 import { useMemo } from 'react';
+import Loading from './utils/Loading';
 
 
 const Listings = ({jobs}) => {
@@ -114,10 +115,10 @@ const Listings = ({jobs}) => {
           />
         </React.Fragment>
       ))}
-      {loading && <p>Loading...</p>}
+      {loading && <Loading/>}
     </Grid>
   );
 };
 
-export default Listings;
+export default React.memo(Listings);
 
