@@ -1,21 +1,32 @@
 /**
  * Search functionality is implemented here
  * filtering based on text state of the input
+ * Included optimizing search using debouncing with delay of 250ms
  */
+
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import '../App.css';
-import { setSearchQuery } from './utils/jobSlice'; 
+import { setSearchQuery } from './utils/jobSlice';
+import useDebounce from '../hooks/useDebounce';
 
 const SearchBar = ({ jobs }) => {
   const dispatch = useDispatch();
   const [text, setText] = React.useState("");
+  const debouncedSearchText = useDebounce(text, 250); // used an ideal time delay 
 
   const handleInputChange = (e) => {
     const searchText = e.target.value;
     setText(searchText);
-    dispatch(setSearchQuery(searchText)); 
   };
+
+  // Dispatching the search query only when the debounced value changes
+  useEffect(() => {
+    if (debouncedSearchText) {
+      dispatch(setSearchQuery(debouncedSearchText));
+    }
+  }, [debouncedSearchText, dispatch]);
 
   return (
     <div className="search-bar">

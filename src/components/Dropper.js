@@ -26,6 +26,7 @@ export const DropDown = ({ jobs, type = "role" }) => {
   };
 
   const handleMinSalaryChange = (event) => {
+    setRole(event.target.value)
     dispatch(setMinSalary(event.target.value));
   };
 
@@ -48,11 +49,11 @@ export const DropDown = ({ jobs, type = "role" }) => {
       {
         type === "experience" && 
         <TextField select SelectProps={{native: true}} value={selectedRole} onChange={handleMinExpChange}>
-          <option key="default" value="">
+          <option sx={{padding: "5em", backgroundColor: "black"}} className='option' key="default" value="">
             Minimum Experience
           </option>
           {getUniqueOptions('minExp').map(option => (
-            <option key={option.key} value={option.value}>
+            <option className='option' key={option.key} value={option.value}>
               {option.value}
             </option>
           ))}
@@ -61,11 +62,11 @@ export const DropDown = ({ jobs, type = "role" }) => {
       {
         type === "salary" && 
         <TextField select SelectProps={{native: true}} value={selectedRole} onChange={handleMinSalaryChange}>
-          <option key="default" value="">
+          <option sx={{padding: "5em"}} className='option' key="default" value="">
             Minimum Salary
           </option>
           {getUniqueOptions('minJdSalary').map(option => (
-            <option key={option.key} value={option.value}>
+            <option className='option' key={option.key} value={option.value}>
               {option.value}
             </option>
           ))}
@@ -80,11 +81,11 @@ export const DropDown = ({ jobs, type = "role" }) => {
           value={selectedRole} 
           onChange={handleLocationChange}
         >
-          <option key="default" value="">
+          <option className='option' key="default" value="">
             Location
           </option>
           {getUniqueOptions('location').map(option => (
-            <option key={option.key} value={option.value}>
+            <option className='option' key={option.key} value={option.value}>
               {option.value}
             </option>
           ))}
@@ -99,11 +100,11 @@ export const DropDown = ({ jobs, type = "role" }) => {
           value={selectedRole} 
           onChange={handleChange}
         >
-          <option key="default" value="">
+          <option className='option' key="default" value="">
             Role
           </option>
           {getUniqueOptions('jobRole').map(option => (
-            <option key={option.key} value={option.value}>
+            <option className='option' key={option.key} value={option.value}>
               {option.value}
             </option>
           ))}

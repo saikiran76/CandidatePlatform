@@ -21,6 +21,7 @@
 
 }
 
+/** styles of filter bar and drop downs */
 .filter-bar{
   margin: 1em;
   padding: 1em;
@@ -28,6 +29,22 @@
   align-items: center;
   gap: 1em;
   
+}
+
+.option{
+  padding: 1em;
+  min-height: 2em;
+}
+
+.css-ffg8md-MuiNativeSelect-select-MuiInputBase-input-MuiOutlinedInput-input:not([multiple]) option, .css-ffg8md-MuiNativeSelect-select-MuiInputBase-input-MuiOutlinedInput-input:not([multiple]) optgroup{
+  background-color: black;
+}
+
+.css-ffg8md-MuiNativeSelect-select-MuiInputBase-input-MuiOutlinedInput-input{
+  padding: 1em;
+}
+.css-ffg8md-MuiNativeSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-ffg8md-MuiNativeSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-ffg8md-MuiNativeSelect-select-MuiInputBase-input-MuiOutlinedInput-input{
+  border-left: #0B57D0 solid 2px;
 }
 
 
@@ -46,7 +63,7 @@
   border-radius: 0.6em;
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1), 0 3px 12px 0 rgba(0, 0, 0, 0.10);
   padding: 0.4em;
-  width: 8.5em;
+  width: 7.5em;
 }
 
 .timer-icon{
@@ -79,7 +96,7 @@
 }
 
 .b1 {
-  width: 350px;
+  width: 400px;
   text-transform: capitalize;
   border-radius: 0.55em;
   margin-left: 1em;
@@ -105,6 +122,9 @@
   }
   .b1:nth-child(2){
     width: 18em;
+  }
+  .filter-bar{
+    flex-direction: column;
   }
 }
 

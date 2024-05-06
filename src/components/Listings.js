@@ -90,7 +90,7 @@ const Listings = ({jobs}) => {
       const matchesSearch = job.companyName.toLowerCase().includes(searchQuery.toLowerCase());
       const matchesRole =!selectedRole || job.jobRole === selectedRole;
       const matchesExp =!selectedMinExp || parseInt(selectedMinExp) <= job.minExp;
-      const matchesSalary =!selectedMinSalary || job.minJdSalary === selectedMinSalary;
+      const matchesSalary =!selectedMinSalary || job.minJdSalary === parseInt(selectedMinSalary);
       const matchesLocation =!selectedLocation || job.location === selectedLocation;
   
       return matchesSearch && matchesRole && matchesExp && matchesSalary && matchesLocation && hasValidMinExp && hasValidMinJdSalary;

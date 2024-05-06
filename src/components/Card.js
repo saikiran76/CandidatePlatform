@@ -26,7 +26,7 @@ const CardLayout = ({role, Location, description, company, logoUrl,
     return(
         <ThemeProvider theme={theme}>
         <Grid item xs={12} sm={6} md={6} lg={4}>
-            <Card className="card" sx={{ width: '90%', padding: '0.7em', borderRadius: '1em' }}>
+            <Card className="card" sx={{ width: '80%', padding: '0.7em', borderRadius: '1em' }}>
                 <div className="Time">
                     <img src="https://cdn-icons-png.flaticon.com/512/3579/3579913.png" className="timer-icon"  alt="timer" />
                     <Typography sx={{ fontSize: '0.70em', width: '20em' }}>Posted 5 days ago</Typography>
@@ -45,7 +45,7 @@ const CardLayout = ({role, Location, description, company, logoUrl,
                     <Typography variant="h6" sx={{ fontSize: 'medium', fontWeight: '500' }}>About Company:</Typography>
                     <Typography variant="h7" sx={{ fontWeight: '600' }}>About us</Typography>
                     <ReadMore>
-                        {description}
+                        {description.substr(0, 150)}
                     </ReadMore>
                 </div>
 
