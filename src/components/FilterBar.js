@@ -22,7 +22,7 @@ const Filter = () =>{
             <DropDown jobs={jobs} type="role"/>
             <DropDown jobs={jobs} type="experience"/>
             <DropDown jobs={jobs} type='loc'/>
-            <SearchBar/>
+            <SearchBar jobs={jobs} />
         </div>
     )
 }

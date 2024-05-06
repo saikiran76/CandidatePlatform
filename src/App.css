@@ -118,3 +118,21 @@
   
 }
 
+/* search field */
+.search-bar{
+  position: relative;
+}
+.inp-box{
+  border: gray 1px solid;
+  border-radius: 0.4em;
+  height: 2.1em;
+  padding: 0.7em;
+  font-size: medium;
+}
+
+.results{
+  background-color: paleturquoise;
+  position: absolute;
+  width: 11.5em;
+  padding: 1em;
+}

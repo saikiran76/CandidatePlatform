@@ -1,20 +1,31 @@
-import { useState } from "react";
+// SearchBar.js
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import '../App.css';
+import { setSearchQuery } from './utils/jobSlice'; 
 
-const SearchBar = () =>{
-    const [text, setSearchText] = useState("");
-    return(
-        <div className="search-bar">
+const SearchBar = ({ jobs }) => {
+  const dispatch = useDispatch();
+  const [text, setText] = React.useState("");
 
-            <input className="" type="text" value={text} onChange={
-                (e) =>{
-                    setSearchText(e.target.value)
-                    console.log("Body Component rendered");
-                }
-            }>
-            </input>
-              
-        </div>
-    )
-}
+  const handleInputChange = (e) => {
+    const searchText = e.target.value;
+    setText(searchText);
+    dispatch(setSearchQuery(searchText)); 
+  };
 
-export default SearchBar
+  return (
+    <div className="search-bar">
+      <input
+        className="inp-box"
+        type="text"
+        placeholder="Search Company Name"
+        value={text}
+        onChange={handleInputChange}
+      />
+    </div>
+  );
+};
+
+export default SearchBar;
+

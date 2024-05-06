@@ -2,14 +2,16 @@
 
 import { createSlice } from "@reduxjs/toolkit";
 
+
 const jobSlice = createSlice({
   name: "jobList",
   initialState: {
-    Role:"",
+    Role: "",
     list: null,
     experience: null,
     minBase: 0,
     location: "",
+    searchQuery: "", // New state for search query
   },
   reducers: {
     addJobs: (state, action) => {
@@ -27,6 +29,9 @@ const jobSlice = createSlice({
     setSelectedRole: (state, action) => {
       state.Role = action.payload;
     },
+    setSearchQuery: (state, action) => { // New action to update search query
+      state.searchQuery = action.payload;
+    },
   },
 });
 
@@ -36,5 +41,6 @@ export const {
   setMinSalary,
   setLocation,
   setSelectedRole,
+  setSearchQuery, // Export the new action
 } = jobSlice.actions;
 export default jobSlice.reducer;

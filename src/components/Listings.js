@@ -12,6 +12,8 @@ import { useMemo } from 'react';
 // import useData from '../hooks/useData';  
 
 const Listings = ({jobs}) => {
+  const searchQuery = useSelector(state => state.jobList.searchQuery);
+  
   const selectedRole = useSelector(state => state.jobList.Role);
   const selectedMinExp = useSelector(state => state.jobList.experience);
   const selectedMinSalary = useSelector(state => state.jobList.minBase);
@@ -104,30 +106,28 @@ const Listings = ({jobs}) => {
   //   if (selectedLocation) {
   //       filteredData = filteredData.filter(item => item.location === selectedLocation);
   //   }
-  const filteredData = useMemo(() => {
-    console.log("Filtering Data...");
-    console.log("card:", card);
-    console.log("selectedRole:", selectedRole);
-    console.log("selectedMinExp:", selectedMinExp);
-    console.log("selectedMinSalary:", selectedMinSalary);
-    console.log("selectedLocation:", selectedLocation);
+  // const filteredData = useMemo(() => {
+  //   console.log("Filtering Data...");
+  //   console.log("card:", card);
+  //   console.log("selectedRole:", selectedRole);
+  //   console.log("selectedMinExp:", selectedMinExp);
+  //   console.log("selectedMinSalary:", selectedMinSalary);
+  //   console.log("selectedLocation:", selectedLocation);
   
-    const filtered = card.filter(
-      item =>
-        (!selectedRole || item.jobRole === selectedRole) &&
-        (!selectedMinExp || parseInt(selectedMinExp) <= item.minExp) &&
-        (!selectedMinSalary || item.minJdSalary === selectedMinSalary) &&
-        (!selectedLocation || item.location === selectedLocation)
-    );
+  //   const filtered = card.filter(
+  //     item =>
+  //       (!selectedRole || item.jobRole === selectedRole) &&
+  //       (!selectedMinExp || parseInt(selectedMinExp) <= item.minExp) &&
+  //       (!selectedMinSalary || item.minJdSalary === selectedMinSalary) &&
+  //       (!selectedLocation || item.location === selectedLocation)
+  //   );
   
-    console.log("Filtered Data:", filtered);
-    return filtered;
-  }, [card, selectedRole, selectedMinExp, selectedMinSalary, selectedLocation]);
+  //   console.log("Filtered Data:", filtered);
+  //   return filtered;
+  // }, [card, selectedRole, selectedMinExp, selectedMinSalary, selectedLocation]);
 
-  console.log('The final filtered data from callback', filteredData)
-  
-  
-  
+  // console.log('The final filtered data from callback', filteredData)
+  const filteredData = jobs.filter(job => job.companyName.toLowerCase().includes(searchQuery.toLowerCase()));
   
   
   return (
