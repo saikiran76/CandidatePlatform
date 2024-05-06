@@ -2,6 +2,13 @@
 ## Overview
 This a User-friendly Candidate Application Platform that allows user to view job listings, and filter jobs.
 
+## Features and optimizations 
+1) Better User Experience with Debounced search 
+2) Code splitting by Lazy loading components
+3) Memoizing function return results to decrease the re-renders
+4) Redux for State management
+5) Responsive design using Material UI library
+
 ## Redux for Data Management
 ![Redux](Reducerforfiltering.png)
 
