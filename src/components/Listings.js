@@ -11,6 +11,7 @@ import { useState } from 'react';
 import { useSelector} from 'react-redux';
 import { useMemo } from 'react';
 import Loading from './utils/Loading';
+import { API_URL } from './utils/constants';
 
 
 const Listings = ({jobs}) => {
@@ -44,7 +45,7 @@ const Listings = ({jobs}) => {
       body
     };
 
-    const response = await fetch("https://api.weekday.technology/adhoc/getSampleJdJSON", requestOptions);
+    const response = await fetch(API_URL, requestOptions);
     const data = await response.json();
     console.log('the jobs at getCardData', jobs)
 

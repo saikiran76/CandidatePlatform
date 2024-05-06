@@ -6,6 +6,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addJobs } from "../components/utils/jobSlice";
+import { API_URL } from "../components/utils/constants";
 
 const useData = () =>{
     const dispatch = useDispatch();
@@ -27,7 +28,7 @@ const useData = () =>{
             body
             };
 
-            const response = await fetch("https://api.weekday.technology/adhoc/getSampleJdJSON", requestOptions);
+            const response = await fetch(API_URL, requestOptions);
             const data = await response.json();
 
             if (data && data.jdList) {

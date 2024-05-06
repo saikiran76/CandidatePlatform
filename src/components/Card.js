@@ -7,7 +7,7 @@ import { Button, Card, Typography, createTheme, ThemeProvider } from "@mui/mater
 import React from "react";
 import { ReadMore } from './utils/ReadMore';
 import {Grid} from "@mui/material";
-import LazyLoad from 'react-lazyload';
+// import LazyLoad from 'react-lazyload';
 
 
 const theme = createTheme({
