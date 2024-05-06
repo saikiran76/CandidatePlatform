@@ -60,6 +60,7 @@ const CardLayout = ({role, Location, description, company, logoUrl,
                 </div>
                 <div className="buttons">
                     <Button
+                        variant='contained'
                         sx={{
                         width: 330,
                         background: '#54efc3',
@@ -86,7 +87,7 @@ const CardLayout = ({role, Location, description, company, logoUrl,
                         }}
                         className="b1"
                     >
-                        Unlock Referral Asks
+                        👤 Unlock Referral Asks
                     </Button>
                 </div>
         </Card>
