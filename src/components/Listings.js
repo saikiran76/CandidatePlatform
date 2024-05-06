@@ -22,7 +22,7 @@ const Listings = ({jobs}) => {
   console.log('From drop down these are the ones selected')
   console.log(selectedRole, selectedMinExp, selectedLocation, selectedMinSalary)
 
-  const [card, setCard] = useState(Array.isArray(jobs) ? jobs : []);
+  const [card, setCard] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
 
@@ -78,8 +78,8 @@ const Listings = ({jobs}) => {
   //   console.log("selectedRole from filter:", selectedRole);
   //   console.log("card:", card);
   //   const filteredCards = card ? selectedRole ? card.filter(item => {
-  //     let isValid = false;
-  //     if (selectedRole && selectedRole !== item.jobRole) isValid = true;
+  //     let isValid = true;
+  //     if (selectedRole && selectedRole !== item.jobRole) isValid = false;
   //     if (selectedMinExp && parseInt(selectedMinExp) !== item.minExp) isValid = true;
   //     if (selectedMinSalary && selectedMinSalary !== item.minJdSalary.toString()) isValid = true 
   //     if (selectedLocation && selectedLocation !== item.location) isValid = true
@@ -127,7 +127,21 @@ const Listings = ({jobs}) => {
   // }, [card, selectedRole, selectedMinExp, selectedMinSalary, selectedLocation]);
 
   // console.log('The final filtered data from callback', filteredData)
-  const filteredData = jobs.filter(job => job.companyName.toLowerCase().includes(searchQuery.toLowerCase()));
+  // const filteredData = card.filter(job => job.companyName.toLowerCase().includes(searchQuery.toLowerCase()));
+
+  const filteredData = useMemo(() => {
+    if (!card) return [];
+
+    return card.filter(job => {
+      const matchesSearch = job.companyName.toLowerCase().includes(searchQuery.toLowerCase());
+      const matchesRole =!selectedRole || job.jobRole === selectedRole;
+      const matchesExp =!selectedMinExp || parseInt(selectedMinExp) <= job.minExp;
+      const matchesSalary =!selectedMinSalary || job.minJdSalary === selectedMinSalary;
+      const matchesLocation =!selectedLocation || job.location === selectedLocation;
+
+      return matchesSearch && matchesRole && matchesExp && matchesSalary && matchesLocation;
+    });
+  }, [card, searchQuery, selectedRole, selectedMinExp, selectedMinSalary, selectedLocation]);
   
   
   return (
