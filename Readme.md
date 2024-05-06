@@ -9,6 +9,11 @@ This a User-friendly Candidate Application Platform that allows user to view job
 4) Redux for State management
 5) Responsive design using Material UI library
 
+## Different screens
+![alt text](image.png)
+![alt text](image-1.png)
+![alt text](image-2.png)
+
 ## Redux for Data Management
 ![Redux](Reducerforfiltering.png)
 
