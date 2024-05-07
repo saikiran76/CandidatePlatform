@@ -9,13 +9,13 @@ This a User-friendly Candidate Application Platform that allows user to view job
 4) Redux for State management
 5) Responsive design using Material UI library
 
+## Redux for Data Management
+![Redux](Reducerforfiltering.png)
+
 ## Different screens
 ![alt text](image.png)
 ![alt text](image-1.png)
 ![alt text](image-2.png)
-
-## Redux for Data Management
-![Redux](Reducerforfiltering.png)
 
 ## Local setup
 Prerequisites
@@ -24,10 +24,13 @@ Prerequisites
 
 ## Installation
 1) Clone the Repository
-First, clone the repository to your local machine
+First, clone the repository to your local machine and navigate into the project folder
 
 
 `git clone https://github.com/your-repository-url.git`
+
+<hr></hr>
+
 `cd your-repository-name`
 
 

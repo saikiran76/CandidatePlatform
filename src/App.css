@@ -21,6 +21,11 @@
 
 }
 
+.css-1w9c8d0-MuiTypography-root{
+  font-family: 'Inter', sans-serif;
+
+}
+
 /** styles of filter bar and drop downs */
 .filter-bar{
   margin: 1em;
@@ -44,7 +49,7 @@
   padding: 1em;
 }
 .css-ffg8md-MuiNativeSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-ffg8md-MuiNativeSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-ffg8md-MuiNativeSelect-select-MuiInputBase-input-MuiOutlinedInput-input{
-  border-left: #0B57D0 solid 2px;
+  font-family: "Inter", sans-serif;
 }
 
 
@@ -153,6 +158,7 @@
 /* search field */
 .search-bar{
   position: relative;
+  font-family: "Inter", sans-serif;
 }
 .inp-box{
   border: gray 1px solid;
@@ -160,6 +166,8 @@
   height: 2.1em;
   padding: 0.7em;
   font-size: medium;
+  font-family: "Inter", sans-serif;
+  
 }
 
 .results{

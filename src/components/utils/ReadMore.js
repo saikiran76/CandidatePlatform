@@ -12,7 +12,7 @@ export const ReadMore = ({ children }) => {
         setIsReadMore(!isReadMore);
     };
     return (
-        <p className="text" style={{fontFamily:"Inter", fontSize:"small"}}>
+        <p className="text" style={{fontFamily:"Inter, sans-serif", fontSize:"small"}}>
             {isReadMore ? text.slice(0, 100) : text}
             <span
                 onClick={toggleReadMore}

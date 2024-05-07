@@ -38,16 +38,16 @@ const CardLayout = ({role, Location, description, company, logoUrl,
                         <img className="logo" src={logoUrl} alt="logo" />
                     {/* </LazyLoad> */}
                     <div className="main-info">
-                        <Typography className="title" variant="h6" sx={{ fontSize: 'medium', fontWeight: '600', letterSpacing: '2px', marginBottom: '1px', cursor:"pointer" }}>{company}</Typography>
-                        <Typography sx={{ fontSize: 'medium', marginBottom: '2px' }}>{role}</Typography>
-                        <Typography variant="h6" sx={{ fontSize: 'small' }}>{Location}</Typography>
+                        <Typography className="title" variant="h6" sx={{ fontSize: 'medium', fontWeight: '600', letterSpacing: '2px', marginBottom: '1px', cursor:"pointer", fontFamily:"Inter, sans-serif" }}>{company}</Typography>
+                        <Typography sx={{ fontSize: 'medium', marginBottom: '2px', fontFamily:"Inter, sans-serif" }}>{role}</Typography>
+                        <Typography variant="h6" sx={{ fontSize: 'small', fontFamily:"Inter, sans-serif" }}>{Location}</Typography>
                     </div>
                 </div>
                 <Typography sx={{ margin: '1em', color: 'Gray', width: '75%' }}>Estimated Salary: ₹{minJdSalary} - {maxJdSalary} LPA ✅</Typography>
 
                 <div className="about">
-                    <Typography variant="h6" sx={{ fontSize: 'medium', fontWeight: '500' }}>About Company:</Typography>
-                    <Typography variant="h7" sx={{ fontWeight: '600' }}>About us</Typography>
+                    <Typography variant="h6" sx={{ fontSize: 'medium', fontWeight: '500', fontFamily:"Inter, sans-serif" }}>About Company:</Typography>
+                    <Typography variant="h7" sx={{ fontWeight: '600', fontFamily:"Inter, sans-serif" }}>About us</Typography>
                     <ReadMore>
                         {description.substr(0, 150)}
                     </ReadMore>
@@ -55,8 +55,8 @@ const CardLayout = ({role, Location, description, company, logoUrl,
 
                 
                 <div>
-                <Typography sx={{ marginLeft: '1.3em', color: 'Gray', width: '75%', fontSize: '0.7em', letterSpacing: '1.5px' }}>Minimum Experience</Typography>
-                <Typography sx={{ marginLeft: '1.3em', width: '75%', fontSize: '0.8em', letterSpacing: '1.5px' }}>{!minExp ? 0 : minExp} years</Typography>
+                <Typography sx={{ marginLeft: '1.3em', color: 'Gray', width: '75%', fontSize: '0.7em', letterSpacing: '1.5px', fontFamily:"Inter, sans-serif" }}>Minimum Experience</Typography>
+                <Typography sx={{ marginLeft: '1.3em', width: '75%', fontSize: '0.8em', letterSpacing: '1.5px', fontFamily:"Inter, sans-serif" }}>{!minExp ? 0 : minExp} years</Typography>
                 </div>
                 <div className="buttons">
                     <Button
@@ -70,6 +70,7 @@ const CardLayout = ({role, Location, description, company, logoUrl,
                         marginLeft: '1em',
                         marginBottom: '0.5em',
                         borderRadius: '0.55em',
+                        fontFamily:"Inter, sans-serif"
                         }}
                         className="b1"
                     >
@@ -84,6 +85,7 @@ const CardLayout = ({role, Location, description, company, logoUrl,
                         textTransform: 'capitalize',
                         marginLeft: '1em',
                         borderRadius: '0.55em',
+                        fontFamily:"Inter, sans-serif"
                         }}
                         className="b1"
                     >
